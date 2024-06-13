@@ -6,6 +6,7 @@ Tìm cặp số (i, j) sao cho:
 1. i != j,
 2. abs(i - j) <= indexDiff (khoảng cách giữa hai chỉ số không vượt quá 'indexDiff')
 3. abs(nums[i] - nums[j]) <= valueDiff (khoảng cách giữa hai giá trị không vượt quá 'valueDiff')
+
 Trả về true nếu cặp đó tồn tại hoặc sai nếu không.
 
 Cách tiếp cận:
