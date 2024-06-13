@@ -2,9 +2,15 @@
 {
     public static void Main(string[] args)
     {
-        int[] nums = [1, 5, 9, 1, 5, 9];
-        int indexDiff = 2;
-        int valueDiff = 3;
+        Console.WriteLine("Nhập các phần tử của mảng, cách nhau bởi dấu cách:");
+        string input = Console.ReadLine();
+        int[] nums = Array.ConvertAll(input.Split(' '), int.Parse);
+
+        Console.WriteLine("Nhập indexDiff:");
+        int indexDiff = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Nhập valueDiff:");
+        int valueDiff = int.Parse(Console.ReadLine());
 
         bool result = ContainsNearbyAlmostDuplicate(nums, indexDiff, valueDiff);
 
