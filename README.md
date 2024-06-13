@@ -14,34 +14,34 @@ Cách tiếp cận:
 Giải thích mã:
 1. Kiểm tra các điều kiện ban đầu: 
    
-    if (indexDiff <= 0 || valueDiff < 0) {
-        return false;
-    }
+       if (indexDiff <= 0 || valueDiff < 0) {
+           return false;
+       }
     
     Nếu 'indexDiff' nhỏ hơn hoặc bằng 0 hoặc 'valueDiff' nhỏ hơn 0, chúng ta không thể tìm được cặp chỉ số thỏa mãn, trả về 'false'.
 
 2. Khởi tạo 'SortedSet':
     
-    SortedSet<long> set = new SortedSet<long>();
+       SortedSet<long> set = new SortedSet<long>();
      
     'SortedSet' được dùng để duy trì các giá trị đã thấy trong khoảng cách 'indexDiff'.
 
 3. Duyệt qua từng phần tử trong mảng:
     
-    for (int i = 0; i < nums.Length; i++) {
-        // Tìm vị trí để chèn giá trị hiện tại (sử dụng long để tránh tràn số nguyên)
-        if (set.GetViewBetween((long)nums[i] - valueDiff, (long)nums[i] + valueDiff).Count > 0) {
-            return true;
-        }
-
-        // Thêm giá trị hiện tại vào set
-        set.Add((long)nums[i]);
-
-        // Loại bỏ phần tử cũ nhất trong cửa sổ nếu cần
-        if (i >= indexDiff) {
-            set.Remove((long)nums[i - indexDiff]);
-        }
-    }
+       for (int i = 0; i < nums.Length; i++) {
+           // Tìm vị trí để chèn giá trị hiện tại (sử dụng long để tránh tràn số nguyên)
+           if (set.GetViewBetween((long)nums[i] - valueDiff, (long)nums[i] + valueDiff).Count > 0) {
+               return true;
+           }
+   
+           // Thêm giá trị hiện tại vào set
+           set.Add((long)nums[i]);
+   
+           // Loại bỏ phần tử cũ nhất trong cửa sổ nếu cần
+           if (i >= indexDiff) {
+               set.Remove((long)nums[i - indexDiff]);
+           }
+       }
     
     - Kiểm tra giá trị: Sử dụng 'GetViewBetween' để lấy tất cả các giá trị trong 'SortedSet' nằm trong khoảng '[nums[i] - valueDiff, nums[i] + valueDiff]'. Nếu khoảng này không trống, nghĩa là có giá trị thỏa mãn điều kiện 'valueDiff'.
     - Thêm giá trị hiện tại: Thêm giá trị hiện tại vào 'SortedSet'.
